@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+<!-- -->
+{% block body %}
+<!-- -->
+{% include 'profile_navbar.html' %}
+<!--  -->
+
+<div id="add-section">
+  <div class="fixed h-full w-full bg-black opacity-70 inset-0 z-0"></div>
+  <div class="absolute inset-0 min-h-[100vh] min-v-[100vh] flex justify-center">
+    <div class="self-center card overflow-y-auto bg-base-100 shadow-xl p-3 w-[70%]">
+      <div class="card-body">
+        <div class="card-actions justify-between">
+          <a href="{% url 'board-index' board_id %}">
+            <svg class="self-center h-10 w-10 stroke-green-400 hover:stroke-green-600 hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" stroke-width="1.12" viewBox="0 0 32 32">
+              <path
+                d="M14.389 7.956v4.374l1.056.01c7.335.071 11.466 3.333 12.543 9.944-4.029-4.661-8.675-4.663-12.532-4.664h-1.067v4.337l-9.884-7.001 9.884-7zm1.067-2.063L2.661 14.956l12.795 9.063v-5.332c5.121.002 9.869.26 13.884 7.42 0-4.547-.751-14.706-13.884-14.833V5.893z"
+              />
+            </svg>
+          </a>
+          <div class="text-3xl font-bold self-center">Section Details</div>
+          <button type="submit" form="create_section_form" value="Submit" class="btn btn-primary bg-green-200 hover:bg-green-300 hover:shadow-lg">Submit</button>
+        </div>
+        <div class="divider divider-neutral p-0 m-0"></div>
+        {% if form.errors %}
+        <!--  -->
+        <div>{{form.errors}}</div>
+        <!--  -->
+        {% endif%}
+        <form class="p-5 grid grid-cols-5 gap-4" action="" method="post" id="create_section_form">
+          {% csrf_token %}
+          <!--  -->
+          <!--  -->
+          <label class="col-span-1 self-center text-xl font-semibold text-right" for="id_title">Title:</label>
+          <input class="col-span-4 input input-bordered w-full max-w-xs text-xl" type="text" name="title" maxlength="64" id="id_title" required />
+          <!--  -->
+          <label class="col-span-1 self-center text-xl font-semibold text-right" for="id_description">Description:</label>
+          <textarea class="col-span-4 text-xl textarea textarea-bordered" name="description" id="id_description"> </textarea>
+          <!--  -->
+          <label class="col-span-1 self-center text-xl font-semibold text-right" for="id_board">Board:</label>
+          <input class="col-span-4 input input-bordered w-full max-w-xs text-xl hover:cursor-not-allowed" type="text" name="board" id="id_board" value="{{board_id}}" readonly />
+          <!--  -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

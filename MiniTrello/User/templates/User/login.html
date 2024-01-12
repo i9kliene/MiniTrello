@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+<!--  -->
+
+{% block body %}
+<!--  -->
+
+{% include 'main_navbar.html' %}
+<!--  -->
+
+<div id="login-user">
+  <div class="fixed h-full w-full bg-black opacity-70 inset-0 z-0"></div>
+  <div class="absolute inset-0 min-h-[100vh] min-v-[100vh] flex justify-center">
+    <div class="self-center card overflow-y-auto bg-base-100 shadow-xl p-3 w-[70%]">
+      <div class="card-body">
+        <div class="border-b-2 border-gray-200">
+          <nav class="-mb-0.5 flex justify-center">
+            <div class="grow py-4 px-1 inline-flex gap-2 border-b-4 border-green-500 text-2xl font-medium whitespace-nowrap text-zinc-700 focus:outline-none focus:font-bold hover:cursor-default">
+              Login
+            </div>
+            <a
+              class="grow py-4 px-1 inline-flex gap-2 border-b-4 border-transparent text-2xl whitespace-nowrap text-zinc-500 hover:text-emerald-500 focus:outline-none focus:font-bold"
+              href="{% url 'user-register' %}"
+              >Sign Up
+            </a>
+          </nav>
+        </div>
+        {% for message in messages %}
+        <!--  -->
+        <div class="pt-5 text-center text-red-600">{{message}}</div>
+        <!--  -->
+        {% endfor %}
+        <form class="p-5 grid grid-cols-5 gap-4" action="" method="post" id="user_login_form">
+          {% csrf_token %}
+          <!--  -->
+          <label class="col-span-1 self-center text-xl font-semibold text-right" for="id_username">Username:</label>
+          <input class="col-span-4 input input-bordered w-full max-w-xs text-xl" type="text" name="username" id="id_username" required />
+          <!--  -->
+          <label class="col-span-1 self-center text-xl font-semibold text-right" for="id_password">Password:</label>
+          <input class="col-span-4 input input-bordered w-full max-w-xs text-xl" type="password" name="password" id="id_password" required />
+          <!--  -->
+        </form>
+        <div class="card-actions justify-center">
+          <button type="submit" form="user_login_form" value="Submit" class="btn btn-primary bg-green-200 hover:bg-green-300 hover:shadow-lg">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

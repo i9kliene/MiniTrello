@@ -1,0 +1,13 @@
+<div class="navbar bg-lime-200 justify-between">
+  <div class="self-center">
+    <a class="text-2xl font-extrabold pl-5 pr-10" href="#">MiniTrello</a>
+    <a class="btn btn-ghost text-xl" href="{% url 'home' %}">Home</a>
+    <a class="btn btn-ghost text-xl" href="{% url 'board-list' %}">DashBoard</a>
+  </div>
+  <div class="self-center">
+    {% if request.user.is_authenticated %}
+    <span class="text-lg mx-5 font-bold">Welcome back, {{request.user.full_name}}</span>
+    <a class="btn btn-sm btn-primary bg-green-200 hover:bg-green-300 hover:shadow-lg text-lg" href="{% url 'user-logout' %}">Logout</a>
+    {% endif %}
+  </div>
+</div>

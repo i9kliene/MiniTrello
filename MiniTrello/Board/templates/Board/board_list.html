@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+<!-- -->
+{% load format_date %}
+<!--  -->
+{% block body %}
+<!-- -->
+{% include 'profile_navbar.html' %}
+<!-- -->
+{% if my_boards %}
+<div class="m-8 text-4xl font-medium">My Boards</div>
+<div class="flex flex-wrap">
+  {% for board in my_boards %}
+  <div class="h-60 w-[30%] card border-2 border-slate-500 m-5">
+    <div class="card-body justify-between p-5">
+      <div>
+        <div class="flex justify-between">
+          <div class="font-bold text-3xl mb-5">{{board.title}}</div>
+          <a href="{% url 'update-board' board.id %}">
+            <svg class="h-8 w-8 hover:h-10 hover:w-10 self-center" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <path d="M.63 11.08zm.21.41v-.1zm.23.38L1 11.68zM1 11.68l-.11-.19zm-.21-.29c-.06-.1-.11-.21-.16-.31.05.1.1.21.16.31zm.32.54v-.06z" />
+              <path
+                d="m11.26 12.63 1.83 1.09a7.34 7.34 0 0 0 1-.94 7.48 7.48 0 0 0 1.56-2.86l-1.74-1A5.29 5.29 0 0 0 14 8a5.29 5.29 0 0 0-.08-.9l1.74-1a7.45 7.45 0 0 0-1.33-2.58 7.54 7.54 0 0 0-1.24-1.22l-1.83 1.04a6 6 0 0 0-1.11-.53v-2A8.55 8.55 0 0 0 7.94.53a8.39 8.39 0 0 0-2.26.3v2a7.23 7.23 0 0 0-1.12.54L2.78 2.28A7.46 7.46 0 0 0 .2 6.06l1.72 1a5.29 5.29 0 0 0-.08.9 5.29 5.29 0 0 0 .08.9l-1.73 1a8 8 0 0 0 .43 1.15c.05.1.1.21.16.31v.1l.11.19.12.19v.06a7.69 7.69 0 0 0 1.64 1.78l1.81-1.08a7.23 7.23 0 0 0 1.12.54v2a8.39 8.39 0 0 0 2.26.31 8.56 8.56 0 0 0 2.22-.3v-2a6 6 0 0 0 1.2-.48zm-2.39 1.52a7.57 7.57 0 0 1-.95.06 7.73 7.73 0 0 1-1-.06v-1.69a4.92 4.92 0 0 1-2.53-1.27l-1.54.92a6.22 6.22 0 0 1-1.08-1.61l1.56-.93a4.27 4.27 0 0 1 0-3.17l-1.56-.92a6.11 6.11 0 0 1 1.12-1.62l1.56.93A5 5 0 0 1 7 3.53V1.82a7.73 7.73 0 0 1 1-.06 7.57 7.57 0 0 1 .95.06v1.72a4.9 4.9 0 0 1 2.4 1.26l1.59-.94a6.31 6.31 0 0 1 1.11 1.62l-1.6.94a4.35 4.35 0 0 1 .3 1.58 4.44 4.44 0 0 1-.29 1.55l1.56.93a6.43 6.43 0 0 1-1.11 1.61l-1.58-.93a5 5 0 0 1-2.49 1.28z"
+              />
+              <path
+                d="M7.92 5.49A2.59 2.59 0 0 0 5.25 8a2.59 2.59 0 0 0 2.67 2.51A2.6 2.6 0 0 0 10.6 8a2.6 2.6 0 0 0-2.68-2.51zM8 9.2A1.35 1.35 0 0 1 6.55 8 1.35 1.35 0 0 1 8 6.7 1.35 1.35 0 0 1 9.39 8 1.35 1.35 0 0 1 8 9.2z"
+              />
+            </svg>
+          </a>
+        </div>
+        <div class="text-xl">{{board.description}}</div>
+      </div>
+      <div class="flex justify-between">
+        <div class="self-center">
+          {% if board.created_at|format_date == board.updated_at|format_date %}
+          <div class="text-sm font-bold">Created: {{board.created_at.date}}</div>
+          {% else %}
+          <div class="text-sm font-bold">Updated: {{board.updated_at.date}}</div>
+          {% endif %}
+        </div>
+        <div class="card-actions">
+          <a href="{% url 'board-index' board.id %}">
+            <div class="btn bg-emerald-200 hover:bg-emerald-500">Go to Board</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <a href="{% url 'create-board' %}" class="relative h-60 w-[30%] card border-2 border-slate-500 m-5">
+    <div class="absolute h-full w-full opacity-0 hover:rounded-2xl hover:opacity-100 hover:backdrop-blur-sm">
+      <svg
+        class="absolute h-20 w-20 top-1/3 left-[40%]"
+        viewBox="0 0 32 32"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+        fill="#000000"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <title>plus</title>
+          <desc>Created with Sketch Beta.</desc>
+          <defs></defs>
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+            <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-360.000000, -1035.000000)" fill="#000000">
+              <path
+                d="M388,1053 L378,1053 L378,1063 C378,1064.1 377.104,1065 376,1065 C374.896,1065 374,1064.1 374,1063 L374,1053 L364,1053 C362.896,1053 362,1052.1 362,1051 C362,1049.9 362.896,1049 364,1049 L374,1049 L374,1039 C374,1037.9 374.896,1037 376,1037 C377.104,1037 378,1037.9 378,1039 L378,1049 L388,1049 C389.104,1049 390,1049.9 390,1051 C390,1052.1 389.104,1053 388,1053 L388,1053 Z M388,1047 L380,1047 L380,1039 C380,1036.79 378.209,1035 376,1035 C373.791,1035 372,1036.79 372,1039 L372,1047 L364,1047 C361.791,1047 360,1048.79 360,1051 C360,1053.21 361.791,1055 364,1055 L372,1055 L372,1063 C372,1065.21 373.791,1067 376,1067 C378.209,1067 380,1065.21 380,1063 L380,1055 L388,1055 C390.209,1055 392,1053.21 392,1051 C392,1048.79 390.209,1047 388,1047 L388,1047 Z"
+                id="plus"
+                sketch:type="MSShapeGroup"
+              ></path>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="card-body h-60 justify-center">
+      <h2 class="text-4xl text-center font-mono font-extrabold m-5">Create New Board</h2>
+    </div>
+  </a>
+</div>
+{% endif %}
+<!--  -->
+{% if member_boards.exists %}
+<div class="divider"></div>
+<div class="m-8 text-4xl font-medium">Member Boards</div>
+<div class="flex flex-wrap">
+  {% for board in member_boards %}
+  <a href="{% url 'board-index' board.id %}" class="h-60 w-[30%] card border-2 border-slate-500 m-5 hover:bg-sky-200">
+    <div class="card-body justify-between pb-3">
+      <div>
+        <div class="font-bold text-3xl mb-5">{{board.title}}</div>
+        <div class="text-xl">{{board.description}}</div>
+      </div>
+      <div class="flex justify-between">
+        <div class="self-center">
+          {% if board.created_at|format_date == board.updated_at|format_date %}
+          <div class="text-sm font-bold">Created: {{board.created_at.date}}</div>
+          {% else %}
+          <div class="text-sm font-bold">Updated: {{board.updated_at.date}}</div>
+          {% endif %}
+        </div>
+        <div class="card-actions">
+          <button class="btn">Action</button>
+        </div>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+<!--  -->
+{% endblock body %}
+<!--  -->

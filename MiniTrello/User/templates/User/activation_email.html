@@ -1,0 +1,9 @@
+{% load static %}
+<!--  -->
+{% autoescape off %}
+<div>
+  Hello {{ user.username }}, Please click the link to activate your account: http://{{ domain }}{% url 'activate' uidb64=uid token=token %} If you did not register on our site, please ignore this
+  message.
+</div>
+<div>Best regards, MiniTrello</div>
+{% endautoescape %}

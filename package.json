@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "npx tailwindcss -i ./MiniTrello/static/css/input.css -o ./MiniTrello/static/css/compiled.css --watch"
+  },
+  "devDependencies": {
+    "daisyui": "^4.4.19",
+    "prettier": "3.1.1",
+    "tailwindcss": "^3.3.6"
+  }
+}

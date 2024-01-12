@@ -1,0 +1,32 @@
+{% load static %}
+<!--  -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MiniTrello</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/@vuepic/vue-datepicker@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@vuepic/vue-datepicker@latest/dist/main.css" />
+    <link href="{% static 'css/compiled.css' %}" rel="stylesheet" />
+  </head>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+  <body class="font-roboto min-h-screen" data-theme="lemonade">
+    <div class="flex flex-col min-h-screen">
+      {% block body %}
+      <!--  -->
+      {% endblock body %}
+    </div>
+  </body>
+</html>

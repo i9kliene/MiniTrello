@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+<!-- -->
+{% block body %}
+<!-- -->
+{% include 'profile_navbar.html' %}
+<!--  -->
+
+<div id="tags-list">
+  <div class="fixed h-full w-full bg-black opacity-70 inset-0 z-0"></div>
+  <div class="absolute inset-0 min-h-[100vh] min-v-[100vh] flex justify-center">
+    <div class="self-center card overflow-y-auto bg-base-100 shadow-xl p-3 w-1/2 h-3/4 rounded-sm">
+      <div class="card-body">
+        <div class="card-actions justify-between">
+          <a href="{% url 'board-index' board_id %}">
+            <svg class="self-center h-10 w-10 stroke-green-400 hover:stroke-green-600 hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" stroke-width="1.12" viewBox="0 0 32 32">
+              <path
+                d="M14.389 7.956v4.374l1.056.01c7.335.071 11.466 3.333 12.543 9.944-4.029-4.661-8.675-4.663-12.532-4.664h-1.067v4.337l-9.884-7.001 9.884-7zm1.067-2.063L2.661 14.956l12.795 9.063v-5.332c5.121.002 9.869.26 13.884 7.42 0-4.547-.751-14.706-13.884-14.833V5.893z"
+              />
+            </svg>
+          </a>
+          <div class="text-3xl font-bold self-center">Tags Details</div>
+          <a href="{% url 'create-tag' board_id %}" class="btn btn-primary bg-green-200 hover:bg-green-300 hover:shadow-lg text-lg">Add New Tag</a>
+        </div>
+        <div class="divider divider-neutral p-0 m-0"></div>
+        {% for tag in tags %}
+        <div class="collapse bg-sky-100">
+          <input type="radio" name="my-accordion-1" checked="checked" />
+          <div class="collapse-title text-xl font-medium">{{tag.title}}</div>
+          <div class="collapse-content">
+            <p>{{tag.description}}</p>
+            <div class="flex justify-end"><a href="{% url 'delete-tag' board_id tag.id %}" class="btn btn-sm bg-green-200 hover:bg-green-300 hover:shadow-lg text-sm">Delete Tag</a></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

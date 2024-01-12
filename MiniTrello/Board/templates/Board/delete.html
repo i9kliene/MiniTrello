@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<!-- -->
+{% block body %}
+<!-- -->
+{% include 'profile_navbar.html' %}
+<!--  -->
+
+<div id="delete-card-section">
+  <div class="fixed h-full w-full bg-black opacity-70 inset-0 z-0"></div>
+  <div class="absolute inset-0 min-h-[100vh] min-v-[100vh] flex justify-center">
+    <div class="self-center card overflow-y-auto bg-base-100 shadow-xl p-3 w-[70%]">
+      <div class="card">
+        <div class="card-body items-center text-center">
+          <h2 class="card-title text-3xl">Are You Sure ??</h2>
+          <div class="divider divider-neutral p-0 m-0"></div>
+          <form action="" method="post" id="delete_card_section_form">
+            {% csrf_token %}
+            <!--  -->
+            <div class="card-actions justify-end">
+              <button type="submit" form="delete_card_section_form" value="Submit" class="btn btn-ghost border-black text-xl">Delete</button>
+              <a href="{% url 'board-index' board_id %}" class="btn btn-ghost border-black text-xl">Back</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}
