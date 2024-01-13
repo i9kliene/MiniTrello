@@ -3,7 +3,9 @@ FROM python:3.11.6-slim-bookworm
 RUN apt-get update
 
 # set work directory
-WORKDIR /app
+ENV APP_HOME=/app
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1

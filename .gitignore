@@ -5,15 +5,7 @@ node_modules/
 __pycache__/
 db.sqlite3
 
-!MiniTrello/
-MiniTrello/*
-!MiniTrello/Board/
-MiniTrello/Board/*
-!MiniTrello/Board/migrations/
-MiniTrello/Board/migrations/*
+MiniTrello/Board/migrations/
 !MiniTrello/Board/migrations/__init__.py
-!MiniTrello/User/
-MiniTrello/User/*
-!MiniTrello/User/migrations/
-MiniTrello/User/migrations/*
+MiniTrello/User/migrations/
 !MiniTrello/User/migrations/__init__.py
