@@ -46,6 +46,5 @@ urlpatterns = [
         views.deleteTag,
         name="delete-tag",
     ),
-    # TODO: Debug mode only. Remove from production
     path("populate/", views.populateDB, name="populate-db"),
 ]

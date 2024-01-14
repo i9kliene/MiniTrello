@@ -93,7 +93,7 @@ def activate(request, uidb64, token):
 
 def userLogin(request):
     if request.user.is_authenticated:
-        return redirect("board-list")  # TODO
+        return redirect("board-list")
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
